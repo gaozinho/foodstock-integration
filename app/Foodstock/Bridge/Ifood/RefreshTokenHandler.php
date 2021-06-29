@@ -22,6 +22,7 @@ class RefreshTokenHandler{
         if(strtotime($this->ifoodBroker->expiresIn) <= time()){ //Token expirado
             
             $broker = Broker::findOrFail(1); //TODO - Criar ENUM ou ENV
+            
             //Refresh token
             $token = new Token(new BodyParameters(GrantType::RefreshToken, $broker->client_distributed_id, $broker->client_distributed_secret, "", "", $this->ifoodBroker->refreshToken));
             $json = $token->request();

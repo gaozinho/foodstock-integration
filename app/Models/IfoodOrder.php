@@ -24,6 +24,6 @@ class IfoodOrder extends Model
     /**
      * @var array
      */
-    protected $fillable = ['ifood_event_id', 'merchant_id', 'orderId', 'json', 'created_at', 'updated_at', 'processed', 'started_production'];
+    protected $fillable = ['ifood_event_id', 'merchant_id', 'orderId', 'json', 'created_at', 'updated_at', 'processed', 'dispatched', 'started_production'];
 
 }

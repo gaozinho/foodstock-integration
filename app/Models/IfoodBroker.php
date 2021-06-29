@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class IfoodBroker extends Model
 {
+    protected $table = 'federated_ifood_brokers';
+
     /**
      * The "type" of the auto-incrementing ID.
      * 

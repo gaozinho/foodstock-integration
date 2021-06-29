@@ -15,6 +15,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Broker extends Model
 {
+
+    protected $table = 'federated_brokers';
+
     /**
      * The "type" of the auto-incrementing ID.
      * 
