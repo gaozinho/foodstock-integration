@@ -22,7 +22,6 @@ class StartProduction extends BaseIntegration implements RequestInterface{
     public function request(){
         try{
             $url = env("BACKOFFICE_START_PRODUCTION_URI");
-
             $httpResponse = $this->httpClient->post($url, $this->formatRequestParameters());
             $json = $this->parseHttpResponse($httpResponse);
             return $json;

@@ -46,6 +46,7 @@ class BaseIntegration{
         $json = $this->parseHttpResponse($httpResponse);
         $json->statusCode = $httpResponse->getStatusCode();
         $json->reasonPhrase = $httpResponse->getReasonPhrase();
+        $json->success = false;
         return $json;
     }     
 

@@ -29,9 +29,9 @@ use App\Foodstock\Bridge\Ifood\StartProductionHandler;
 Route::get('/', function () {
 
     
-    $startProduction = new StartProduction(env("BACKOFFICE_TOKEN"), new StartProductionBody(1, 2, 'd18dd059-d9b2-4758-b97c-f8c506d80949', '{}'));
-    $response = $startProduction->request();
-    dd($response);
+    //$startProduction = new StartProduction(env("BACKOFFICE_TOKEN"), new StartProductionBody(1, 2, 'd18dd059-d9b2-4758-b97c-f8c506d80949', '{}'));
+    //$response = $startProduction->request();
+    //dd($response);
 
     /*
 

@@ -43,8 +43,8 @@ class EventsHandler extends BaseHandler{
                     //TODO - Tratar chave duplicada
                 }
             }
-            PulledEvents::dispatch($this->ifoodBroker); //Dá conhecimento ao ifood e recupera detalhes do pedido
         }
+        PulledEvents::dispatch($this->ifoodBroker); //Dá conhecimento ao ifood e recupera detalhes do pedido
 
         return $ifoodEvents;
     }
