@@ -31,7 +31,7 @@ class IfoodBroker extends Model
     /**
      * @var array
      */
-    protected $fillable = ['broker_id', 'merchant_id', 'restaurant_id', 'acknowledgment', 'authorizationCode', 'authorizationCodeVerifier', 'accessToken', 'refreshToken', 'expiresIn', 'created_at', 'updated_at'];
+    protected $fillable = ['broker_id', 'merchant_id', 'restaurant_id', 'acknowledgment', 'validated', 'authorizationCode', 'authorizationCodeVerifier', 'accessToken', 'refreshToken', 'expiresIn', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -19,7 +19,10 @@ class OrderProcessor{
     private function startIfood(){
         Log::info("IFOOD integration - STARTED");
 
-        $ifoodBrokers = IfoodBroker::where("broker_id", 1)->where("enabled", 1)->get();
+        $ifoodBrokers = IfoodBroker::where("broker_id", 1)
+            ->where("enabled", 1)
+            ->where("validated", 1)
+            ->get();
         foreach($ifoodBrokers as $ifoodBroker){
             StartedProccess::dispatch($ifoodBroker); //Passo 1
         }
