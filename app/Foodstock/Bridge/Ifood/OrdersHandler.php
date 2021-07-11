@@ -9,6 +9,7 @@ use App\Models\IfoodBroker;
 use App\Models\IfoodEvent;
 use App\Models\IfoodOrder;
 
+use App\Foodstock\Bridge\Ifood\Events\CanceledOrders;
 use App\Foodstock\Bridge\Ifood\Events\IntegratedOrders;
 use App\Foodstock\Bridge\Ifood\BaseHandler;
 
@@ -26,28 +27,43 @@ class OrdersHandler extends BaseHandler{
         $ifoodEvents = IfoodEvent::where("merchant_id", $this->ifoodBroker->merchant_id)
             ->where("processed", 0)->get();
         foreach($ifoodEvents as $ifoodEvent){
-            $orderDetail = new OrderDetail($this->ifoodBroker->accessToken, $ifoodEvent->orderId);
-            $orderJson = $orderDetail->request();
-            try{
-                $ifoodOrders[] = IfoodOrder::create([
-                    'orderId' => $ifoodEvent->orderId, 
-                    'ifood_event_id' => $ifoodEvent->id, 
-                    'merchant_id' => $ifoodEvent->merchant_id, 
-                    'json' => json_encode($orderJson) , 
-                    'processed' => 0
-                ]); 
+
+            if($ifoodEvent->code == "PLC"){
+                $orderDetail = new OrderDetail($this->ifoodBroker->accessToken, $ifoodEvent->orderId);
+                $orderJson = $orderDetail->request();
+                
+                try{
+                    $ifoodOrders[] = IfoodOrder::create([
+                        'orderId' => $ifoodEvent->orderId, 
+                        'ifood_event_id' => $ifoodEvent->id, 
+                        'merchant_id' => $ifoodEvent->merchant_id, 
+                        'json' => json_encode($orderJson) , 
+                        'processed' => 0
+                    ]); 
+                   
+                    //Tira o evento da lista
+                    $ifoodEvent->processed = 1;
+                    $ifoodEvent->processed_at = date("Y-m-d H:i:s");
+                    $ifoodEvent->save();
+                }catch(\Exception $e){
+                    //TODO - Tratar chave duplicada
+                }
+                
+                //PEGA DETALHES DO PEDIDO
+                IntegratedOrders::dispatch($this->ifoodBroker, $ifoodEvent); //Aceita o pedido no ifood
+            }elseif($ifoodEvent->code == "CAN"){
+                //CANCELA PEDIDO
+
                 //Tira o evento da lista
                 $ifoodEvent->processed = 1;
                 $ifoodEvent->processed_at = date("Y-m-d H:i:s");
                 $ifoodEvent->save();
-            }catch(\Exception $e){
-                //TODO - Tratar chave duplicada
+
+                CanceledOrders::dispatch($this->ifoodBroker, $ifoodEvent);
             }
-            
-            IntegratedOrders::dispatch($this->ifoodBroker, $ifoodEvent); //Aceita o pedido no ifood
         }
         
-        return $ifoodOrders;
+        //return $ifoodOrders;
     }
    
 }

@@ -9,12 +9,12 @@ use App\Models\IfoodEvent;
 use App\Models\IfoodOrder;
 use Validator;
 use App\Http\Resources\IfoodBroker as IfoodBrokerResource;
-use App\Foodstock\Bridge\Ifood\OrderDispatchActionHandler;
+use App\Foodstock\Bridge\Ifood\OrderReadyActionHandler;
    
-class IfoodOrderDispatchController extends BaseController
+class IfoodOrderReadyController extends BaseController
 {
 
-    public function dispatchOrder(Request $request)
+    public function readyOrder(Request $request)
     {
         $ifoodBroker = null;
         $input = $request->all();
@@ -30,27 +30,27 @@ class IfoodOrderDispatchController extends BaseController
 
         try{
             //$ifoodOrder = IfoodOrder::where("orderId", $input["ifood_order_id"])->firstOrFail();
-            //$ifoodOrder->dispatched = 1;
-            //$ifoodOrder->save();        
+            //$ifoodOrder->ready = 1;
+            //$ifoodOrder->save();
             
             $ifoodBroker = IfoodBroker::findOrFail($input["ifood_broker_id"]);
             $ifoodEvent = IfoodEvent::where("orderId", $input["ifood_order_id"])->firstOrFail();
-
-            $orderDispatchActionHandler = new OrderDispatchActionHandler($ifoodBroker, $ifoodEvent);
-            $success = $orderDispatchActionHandler->handle();
-
+    
+            $orderReadyActionHandler = new OrderReadyActionHandler($ifoodBroker, $ifoodEvent);
+            $success = $orderReadyActionHandler->handle();
             
             $response = [
                 'success' => $success,
-                'message' => 'Dispatched successfully.',
+                'message' => 'Ready status registered successfully.',
             ];
 
             return response()->json($response, 200);
         }catch(\Exception $e){
             return response()->json([
                 'success' => false,
-                'message' => 'Cant dispatch order.',
+                'message' => 'Cant register ready status.',
             ], 500);
         }
+        
     }
 }

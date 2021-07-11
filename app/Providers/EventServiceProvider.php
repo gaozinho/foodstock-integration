@@ -20,6 +20,9 @@ use App\Foodstock\Bridge\Ifood\Listeners\StartOrderProduction;
 use App\Foodstock\Bridge\Ifood\Events\StartedOrderProduction;
 use App\Foodstock\Bridge\Ifood\Listeners\SendAcknowledgments;
 
+use App\Foodstock\Bridge\Ifood\Events\CanceledOrders;
+use App\Foodstock\Bridge\Ifood\Listeners\CancelProduction;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -44,6 +47,10 @@ class EventServiceProvider extends ServiceProvider
 
         StartedOrderProduction::class => [
             SendAcknowledgments::class,
+        ] ,    
+
+        CanceledOrders::class => [
+            CancelProduction::class,
         ]                 
     ];
 

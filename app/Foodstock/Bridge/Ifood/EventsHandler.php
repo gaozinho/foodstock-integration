@@ -22,13 +22,15 @@ class EventsHandler extends BaseHandler{
  
     public function handle(){
         
-        $pooling = new Pooling($this->ifoodBroker->accessToken, new QueryStringParameters(["types" => "PLC"]));
+        $pooling = new Pooling($this->ifoodBroker->accessToken, new QueryStringParameters(["types" => "PLC,CAN"]));
         $poolingsJson = $pooling->request(); //TODO - Tratar token expirados
         $ifoodEvents = [];
+        //dd($poolingsJson);
         
         if(is_array($poolingsJson)){
             foreach($poolingsJson as $poolingJson){
                 try{
+
                     $ifoodEvents[] = IfoodEvent::create([
                         'id' => $poolingJson->id, 
                         'merchant_id' => $this->ifoodBroker->merchant_id, 
@@ -39,13 +41,15 @@ class EventsHandler extends BaseHandler{
                         'json' => json_encode($poolingJson) , 
                         'processed' => 0
                     ]);
+
                 }catch(\Exception $e){
                     //TODO - Tratar chave duplicada
                 }
             }
         }
+
         PulledEvents::dispatch($this->ifoodBroker); //Dá conhecimento ao ifood e recupera detalhes do pedido
 
-        return $ifoodEvents;
+        //return $ifoodEvents;
     }
 }
