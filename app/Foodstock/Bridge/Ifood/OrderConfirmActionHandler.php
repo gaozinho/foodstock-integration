@@ -25,22 +25,16 @@ class OrderConfirmActionHandler extends BaseHandler{
     }
  
     public function handle(){
-
-        $success = false;
-
-        if($this->ifoodBroker->acknowledgment == 1){
-            $ifoodOrders = IfoodOrder::where("merchant_id", $this->ifoodBroker->merchant_id)
+        $ifoodOrders = IfoodOrder::where("merchant_id", $this->ifoodBroker->merchant_id)
             ->where("processed", 0)->get();
-            foreach($ifoodOrders as $ifoodOrder){
+        
+        foreach($ifoodOrders as $ifoodOrder){
+            if($this->ifoodBroker->acknowledgment == 1){
                 $orderAction = new OrderAction($this->ifoodBroker->accessToken, $this->ifoodEvent->orderId, EndPoints::OrderActionConfirm);
-                $success = $orderAction->request(); //Dá conhecimento
-                if($success){
-                    $ifoodOrder->processed = 1;
-                    $ifoodOrder->save();
-                }
+                $success = $orderAction->request(); //Avisa que aceitou o pedido
             }
-        }else{
-            $success = true; //Finaliza sem dar conhecimento
-        }      
+            $ifoodOrder->processed = 1;
+            $ifoodOrder->save();                    
+        }
     }
 }

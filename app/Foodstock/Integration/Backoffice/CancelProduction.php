@@ -5,13 +5,13 @@ use App\Foodstock\Integration\BaseIntegration; //TODO - Revisar pacotes
 
 use App\Foodstock\Integration\Interfaces\RequestInterface; //TODO - Revisar pacotes
 
-use App\Foodstock\Integration\Backoffice\StartProductionBody;
+use App\Foodstock\Integration\Backoffice\CancelProductionBody;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\ConnectException;
 
 class CancelProduction extends BaseIntegration implements RequestInterface{
 
-    public function __construct($authorization, StartProductionBody $requestBody)
+    public function __construct($authorization, CancelProductionBody $requestBody)
     {
         parent::__construct();
         $this->setAuthorizationHeader($authorization);

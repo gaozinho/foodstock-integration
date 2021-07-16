@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Foodstock\Bridge\Ifood\CancelProductionHandler;
 use Illuminate\Support\Facades\Log;
+use App\Foodstock\Bridge\Ifood\CancelAcknowledgmentsHandler;
 
 class CancelProduction implements ShouldQueue
 {
@@ -29,5 +30,6 @@ class CancelProduction implements ShouldQueue
     public function handle(CanceledOrders $event)
     {
         (new CancelProductionHandler($event->ifoodBroker, $event->ifoodEvent))->handle();
+        (new CancelAcknowledgmentsHandler($event->ifoodBroker))->handle();
     }
 }

@@ -9,7 +9,7 @@ use App\Models\IfoodOrder;
 use App\Models\IfoodEvent;
 
 use App\Foodstock\Integration\Backoffice\CancelProduction;
-use App\Foodstock\Integration\Backoffice\StartProductionBody;
+use App\Foodstock\Integration\Backoffice\CancelProductionBody;
 use App\Foodstock\Bridge\Ifood\BaseHandler;
 use App\Foodstock\Bridge\Ifood\Events\StartedOrderProduction;
 
@@ -22,19 +22,21 @@ class CancelProductionHandler extends BaseHandler{
     public function __construct(IfoodBroker $ifoodBroker, IfoodEvent $ifoodEvent){
         parent::__construct($ifoodBroker);
         $this->ifoodEvent = $ifoodEvent;
-        Log::info("IFOOD integration - Step CANCEL : send order o backoffice system", ["restaurant_id", $ifoodBroker->restaurant_id]);
+        Log::info("IFOOD integration - Step CANCEL : Backoffice : send order o backoffice system", ["restaurant_id", $ifoodBroker->restaurant_id]);
     }
  
     public function handle(){
-        $ifoodOrders = IfoodOrder::where("ifood_event_id", $this->ifoodEvent->id)
+        
+        $ifoodOrders = IfoodOrder::where("orderId", $this->ifoodEvent->orderId)
             ->get();
 
         foreach($ifoodOrders as $ifoodOrder){
+            
             $cancelProduction = new CancelProduction(env("BACKOFFICE_TOKEN"), 
-                new StartProductionBody($this->ifoodBroker->broker_id, $this->ifoodBroker->restaurant_id, $ifoodOrder->orderId, $ifoodOrder->json)
+                new CancelProductionBody($this->ifoodBroker->broker_id, $this->ifoodBroker->restaurant_id, $ifoodOrder->orderId, $ifoodOrder->json, $this->ifoodEvent->json)
             );
 
-            $response = $cancelProduction->request(); //Abre pedido no backoffice
+            $response = $cancelProduction->request(); //Envia fato para o backoffice
 
             if(is_object($response) && isset($response->success) && $response->success){
                 $ifoodOrder->canceled_production = 1;

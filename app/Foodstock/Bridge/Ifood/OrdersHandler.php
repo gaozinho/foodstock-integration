@@ -26,6 +26,7 @@ class OrdersHandler extends BaseHandler{
         $ifoodOrders = [];
         $ifoodEvents = IfoodEvent::where("merchant_id", $this->ifoodBroker->merchant_id)
             ->where("processed", 0)->get();
+
         foreach($ifoodEvents as $ifoodEvent){
 
             if($ifoodEvent->code == "PLC"){
@@ -33,14 +34,17 @@ class OrdersHandler extends BaseHandler{
                 $orderJson = $orderDetail->request();
                 
                 try{
-                    $ifoodOrders[] = IfoodOrder::create([
-                        'orderId' => $ifoodEvent->orderId, 
+                    $ifoodOrders[] = IfoodOrder::updateOrCreate(
+                    [
+                        'orderId' => $ifoodEvent->orderId
+                    ],
+                    [
                         'ifood_event_id' => $ifoodEvent->id, 
                         'merchant_id' => $ifoodEvent->merchant_id, 
                         'json' => json_encode($orderJson) , 
                         'processed' => 0
                     ]); 
-                   
+                    
                     //Tira o evento da lista
                     $ifoodEvent->processed = 1;
                     $ifoodEvent->processed_at = date("Y-m-d H:i:s");
@@ -51,15 +55,17 @@ class OrdersHandler extends BaseHandler{
                 
                 //PEGA DETALHES DO PEDIDO
                 IntegratedOrders::dispatch($this->ifoodBroker, $ifoodEvent); //Aceita o pedido no ifood
-            }elseif($ifoodEvent->code == "CAN"){
-                //CANCELA PEDIDO
 
+            }elseif($ifoodEvent->code == "CAN"){
                 //Tira o evento da lista
                 $ifoodEvent->processed = 1;
                 $ifoodEvent->processed_at = date("Y-m-d H:i:s");
-                $ifoodEvent->save();
+                $ifoodEvent->save();         
 
+                //CANCELA PEDIDO
                 CanceledOrders::dispatch($this->ifoodBroker, $ifoodEvent);
+
+       
             }
         }
         
