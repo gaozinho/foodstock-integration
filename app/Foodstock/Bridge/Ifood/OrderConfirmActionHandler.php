@@ -34,7 +34,7 @@ class OrderConfirmActionHandler extends BaseHandler{
                 $success = $orderAction->request(); //Avisa que aceitou o pedido
             }
             $ifoodOrder->processed = 1;
-            $ifoodOrder->save();                    
+            $ifoodOrder->save();
         }
     }
 }

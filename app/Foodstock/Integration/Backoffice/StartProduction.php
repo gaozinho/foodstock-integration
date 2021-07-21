@@ -28,7 +28,7 @@ class StartProduction extends BaseIntegration implements RequestInterface{
         }catch(BadResponseException $exception){ //400, 500 Family
             return $this->parseErrorResponse($exception->getResponse());
         }catch(ConnectException $connException){
-            return $this->parseErrorResponse($connException->getResponse());
+            //return $this->parseErrorResponse($connException->getResponse());
         }
     }
 

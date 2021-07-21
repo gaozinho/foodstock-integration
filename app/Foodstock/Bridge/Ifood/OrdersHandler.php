@@ -60,7 +60,7 @@ class OrdersHandler extends BaseHandler{
                 //Tira o evento da lista
                 $ifoodEvent->processed = 1;
                 $ifoodEvent->processed_at = date("Y-m-d H:i:s");
-                $ifoodEvent->save();         
+                $ifoodEvent->save();
 
                 //CANCELA PEDIDO
                 CanceledOrders::dispatch($this->ifoodBroker, $ifoodEvent);

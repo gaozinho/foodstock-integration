@@ -31,9 +31,14 @@ class CancelProductionHandler extends BaseHandler{
             ->get();
 
         foreach($ifoodOrders as $ifoodOrder){
-            
+
+            $ifoodCancellation = json_decode($this->ifoodEvent->json);
+            $code = isset($ifoodCancellation->metadata) ? $ifoodCancellation->metadata->CANCEL_CODE : 0;
+            $reason = isset($ifoodCancellation->metadata) ? $ifoodCancellation->metadata->CANCEL_REASON : "Undefined";
+            $origin = isset($ifoodCancellation->metadata) ? $ifoodCancellation->metadata->CANCEL_ORIGIN : "Undefined";
+
             $cancelProduction = new CancelProduction(env("BACKOFFICE_TOKEN"), 
-                new CancelProductionBody($this->ifoodBroker->broker_id, $this->ifoodBroker->restaurant_id, $ifoodOrder->orderId, $ifoodOrder->json, $this->ifoodEvent->json)
+                new CancelProductionBody($this->ifoodBroker->broker_id, $this->ifoodBroker->restaurant_id, $ifoodOrder->orderId, $this->ifoodEvent->json, $reason, $code, $origin)
             );
 
             $response = $cancelProduction->request(); //Envia fato para o backoffice
