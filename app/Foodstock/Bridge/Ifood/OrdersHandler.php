@@ -33,27 +33,50 @@ class OrdersHandler extends BaseHandler{
                 $orderDetail = new OrderDetail($this->ifoodBroker->accessToken, $ifoodEvent->orderId);
                 $orderJson = $orderDetail->request();
                 
+                //$ifoodOrderMerchant = IfoodOrder::where("orderId", $ifoodEvent->orderId)->selectRaw("id, JSON_VALUE(JSON, '$.merchant.id') AS merchant_id")->first();
+                
                 try{
-                    $ifoodOrders[] = IfoodOrder::updateOrCreate(
-                    [
-                        'orderId' => $ifoodEvent->orderId
-                    ],
-                    [
-                        'ifood_event_id' => $ifoodEvent->id, 
-                        'merchant_id' => $ifoodEvent->merchant_id, 
-                        'json' => json_encode($orderJson) , 
-                        'processed' => 0
-                    ]); 
-                    
+
+                    $ifoodOrder = IfoodOrder::where("orderId", $ifoodEvent->orderId)->first();
+                    if(is_object($ifoodOrder)){ //Coloca o merchant correto, caso já exista
+                        $ifoodOrderMerchant = IfoodOrder::where("orderId", $ifoodEvent->orderId)->selectRaw("id, JSON_VALUE(JSON, '$.merchant.id') AS merchant_id")->first();
+                        $ifoodOrder->update([
+                            'merchant_id' => $ifoodOrderMerchant ? $ifoodOrderMerchant->merchant_id : $ifoodEvent->merchant_id, //TODO - Validar merchant do JSON recebido no order
+                        ]);
+                        $ifoodOrders[] = $ifoodOrder;
+                    }else{
+                        //Cria e depois atualiza o merchant
+                        $ifoodOrder = IfoodOrder::create(
+                            [
+                                'orderId' => $ifoodEvent->orderId,
+                                'ifood_event_id' => $ifoodEvent->id, 
+                                'merchant_id' => $ifoodEvent->merchant_id,
+                                'json' => json_encode($orderJson) , 
+                                'processed' => 0
+                            ]); 
+                        $ifoodOrderMerchant = IfoodOrder::where("orderId", $ifoodEvent->orderId)->selectRaw("id, JSON_VALUE(JSON, '$.merchant.id') AS merchant_id")->first();
+                        $ifoodOrder->update([
+                            'merchant_id' => $ifoodOrderMerchant ? $ifoodOrderMerchant->merchant_id : $ifoodEvent->merchant_id, //TODO - Validar merchant do JSON recebido no order
+                        ]);
+                        $ifoodOrders[] = $ifoodOrder;
+                    }
+
+                    //dd($ifoodEvents, $orderJson, $ifoodOrderMerchant, $ifoodOrders, $ifoodOrderMerchant ? $ifoodOrderMerchant->merchant_id : $ifoodEvent->merchant_id);
+
                     //Tira o evento da lista
                     $ifoodEvent->processed = 1;
+                    $ifoodEvent->merchant_id = ($ifoodOrderMerchant ? $ifoodOrderMerchant->merchant_id : $ifoodEvent->merchant_id); //TODO - Update event com id_merchant
                     $ifoodEvent->processed_at = date("Y-m-d H:i:s");
                     $ifoodEvent->save();
+
+                    //Confirma o broker, pelo merchant
+                    $this->ifoodBroker = IfoodBroker::where("merchant_id", $ifoodEvent->merchant_id)->first();
+
                 }catch(\Exception $e){
                     //TODO - Tratar chave duplicada
+
                 }
                 
-                //PEGA DETALHES DO PEDIDO
                 IntegratedOrders::dispatch($this->ifoodBroker, $ifoodEvent); //Aceita o pedido no ifood
 
             }elseif($ifoodEvent->code == "CAN"){
@@ -62,12 +85,17 @@ class OrdersHandler extends BaseHandler{
                 $ifoodEvent->processed_at = date("Y-m-d H:i:s");
                 $ifoodEvent->save();
 
+                $ifoodOrderMerchant = IfoodOrder::where("orderId", $ifoodEvent->orderId)->selectRaw("id, JSON_VALUE(JSON, '$.merchant.id') AS merchant_id")->first();
+                $this->ifoodBroker = IfoodBroker::where("merchant_id", $ifoodOrderMerchant->merchant_id)->first();
+
+
                 //CANCELA PEDIDO
                 CanceledOrders::dispatch($this->ifoodBroker, $ifoodEvent);
 
        
             }
         }
+
         
         //return $ifoodOrders;
     }

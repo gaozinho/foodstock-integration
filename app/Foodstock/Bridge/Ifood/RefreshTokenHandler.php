@@ -31,11 +31,11 @@ class RefreshTokenHandler{
     
                 $this->ifoodBroker->accessToken = $json->accessToken;
                 $this->ifoodBroker->refreshToken = $json->refreshToken;
-                $this->ifoodBroker->expiresIn = date("Y-m-d H:i:s", (time() + $json->expiresIn - 120));
-    
+                $this->ifoodBroker->expiresIn = date("Y-m-d H:i:s", (time() + ($json->expiresIn / 2)));
+
                 $this->ifoodBroker->save();
             }catch(\Exception $e){
-                Log::error("Não foi possivel refresh token", ["broker_id" => $ifoodBroker->restaurant_id, "broker" => (array) $this->ifoodBroker ]);
+                Log::error("Não foi possivel refresh token", ["broker_id" => $this->ifoodBroker->restaurant_id, "broker" => (array) $this->ifoodBroker ]);
             }
 
         }

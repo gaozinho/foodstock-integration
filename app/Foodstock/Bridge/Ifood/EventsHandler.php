@@ -24,6 +24,8 @@ class EventsHandler extends BaseHandler{
         
         $pooling = new Pooling($this->ifoodBroker->accessToken, new QueryStringParameters(["types" => "PLC,CAN"]));
         $poolingsJson = $pooling->request(); //TODO - Tratar token expirados
+        Log::info("IFOOD integration - FOUND ON POOLING: " . (is_array($poolingsJson) ? count($poolingsJson) : 0));
+
         $ifoodEvents = [];
         //dd($poolingsJson);
         
@@ -41,6 +43,7 @@ class EventsHandler extends BaseHandler{
                         'json' => json_encode($poolingJson) , 
                         'processed' => 0
                     ]);
+                    Log::info("IFOOD integration - ORDERID: " . $poolingJson->orderId);
 
                 }catch(\Exception $e){
                     //TODO - Tratar chave duplicada

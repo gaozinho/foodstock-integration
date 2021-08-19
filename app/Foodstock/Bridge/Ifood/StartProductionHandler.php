@@ -43,7 +43,7 @@ class StartProductionHandler extends BaseHandler{
 
             StartedOrderProduction::dispatch($this->ifoodBroker); //Dá conhecimento
 
-            return $response;
+            //return $response;
         }
     }
 }
