@@ -36,6 +36,6 @@ class OrderReadyActionHandler extends BaseHandler{
             $ifoodOrder->save();
         }
         
-        return $success;
+        //return $success;
     }
 }

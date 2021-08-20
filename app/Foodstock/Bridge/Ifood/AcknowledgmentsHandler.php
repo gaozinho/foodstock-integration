@@ -33,11 +33,15 @@ class AcknowledgmentsHandler extends BaseHandler{
             $ifoodEvent->save();            
         }
 
+        Log::info("IFOOD integration - Step FIVE COUNT " . count($jsonObjects));
+
         if(count($jsonObjects) > 0){
+            //Log::info("IFOOD integration - Step FIVE", ["ORDERS" => json_encode($jsonObjects)]);
+
             $acknowledgment = new Acknowledgment($this->ifoodBroker->accessToken, json_encode($jsonObjects));   
-            return $acknowledgment->request(); //TODO - Tratar token expirado
+            $acknowledgment->request(); //TODO - Tratar token expirado
         }else{
-            return true;
+            //return true;
         }
     }    
    

@@ -28,7 +28,7 @@ class ConfirmReceiptOrder implements ShouldQueue
      */
     public function handle(IntegratedOrders $event)
     {
-        (new OrderConfirmActionHandler($event->ifoodBroker, $event->ifoodEvent))->handle();
+        (new OrderConfirmActionHandler($event->ifoodBroker))->handle();
         
     }
 }

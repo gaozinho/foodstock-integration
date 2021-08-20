@@ -39,7 +39,7 @@ class RefreshTokenHandler{
             }
 
         }
-        return $this->ifoodBroker;
+        //return $this->ifoodBroker;
     }
    
 }

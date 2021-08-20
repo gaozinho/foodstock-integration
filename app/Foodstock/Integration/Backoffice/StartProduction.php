@@ -30,7 +30,7 @@ class StartProduction extends BaseIntegration implements RequestInterface{
         }catch(ConnectException $connException){
             //return $this->parseErrorResponse($connException->getResponse());
         }
-    }
+    } 
 
     private function formatRequestParameters(){
         return array_merge(["form_params" => $this->getRequestBody()->toArray()], $this->headers);

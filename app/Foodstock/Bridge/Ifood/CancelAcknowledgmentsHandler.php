@@ -38,10 +38,10 @@ class CancelAcknowledgmentsHandler extends BaseHandler{
             $acknowledgment = new Acknowledgment($this->ifoodBroker->accessToken, json_encode($jsonObjects));   
             $response = $acknowledgment->request(); //TODO - Tratar token expirado
 
-            return $response;
+            //return $response;
 
         }else{
-            return true;
+            //return true;
         }
     }    
    

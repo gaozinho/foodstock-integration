@@ -24,13 +24,25 @@ class OrdersHandler extends BaseHandler{
 
     public function handle(){
         $ifoodOrders = [];
+
         $ifoodEvents = IfoodEvent::where("merchant_id", $this->ifoodBroker->merchant_id)
-            ->where("processed", 0)->get();
+            ->where("processed", 0)
+            ->where("processing", 0)
+            ->get();
+
+        Log::info("IFOOD integration - Step TWO TOTAL", ["Total", count($ifoodEvents)]);
+
+        
+        for($i = 0; $i< count($ifoodEvents); $i++){
+            $ifoodEvents[$i]->processing = 1;
+            $ifoodEvents[$i]->save();
+        } 
 
         foreach($ifoodEvents as $ifoodEvent){
 
             if($ifoodEvent->code == "PLC"){
                 $orderDetail = new OrderDetail($this->ifoodBroker->accessToken, $ifoodEvent->orderId);
+                //Log::info("IFOOD integration - Step TWO", ["Order ID", $ifoodEvent->orderId]);
                 $orderJson = $orderDetail->request();
                 
                 //$ifoodOrderMerchant = IfoodOrder::where("orderId", $ifoodEvent->orderId)->selectRaw("id, JSON_VALUE(JSON, '$.merchant.id') AS merchant_id")->first();
@@ -70,15 +82,18 @@ class OrdersHandler extends BaseHandler{
                     $ifoodEvent->save();
 
                     //Confirma o broker, pelo merchant
-                    $this->ifoodBroker = IfoodBroker::where("merchant_id", $ifoodEvent->merchant_id)->first();
+                    $this->ifoodBroker = IfoodBroker::where("merchant_id", $ifoodEvent->merchant_id)->firstOrFail();
+
 
                 }catch(\Exception $e){
+                    throw $e;
                     //TODO - Tratar chave duplicada
-
+                    
                 }
-                
+
                 IntegratedOrders::dispatch($this->ifoodBroker, $ifoodEvent); //Aceita o pedido no ifood
 
+    
             }elseif($ifoodEvent->code == "CAN"){
                 //Tira o evento da lista
                 $ifoodEvent->processed = 1;
@@ -88,9 +103,13 @@ class OrdersHandler extends BaseHandler{
                 $ifoodOrderMerchant = IfoodOrder::where("orderId", $ifoodEvent->orderId)->selectRaw("id, JSON_VALUE(JSON, '$.merchant.id') AS merchant_id")->first();
                 $this->ifoodBroker = IfoodBroker::where("merchant_id", $ifoodOrderMerchant->merchant_id)->first();
 
-
-                //CANCELA PEDIDO
-                CanceledOrders::dispatch($this->ifoodBroker, $ifoodEvent);
+                try{
+                    //CANCELA PEDIDO
+                    CanceledOrders::dispatch($this->ifoodBroker, $ifoodEvent);
+                }catch(\Exception $e){
+                    //TODO - Tratar chave duplicada
+                    Log::info("IFOOD integration - Order cancelation", $e);
+                }
 
        
             }

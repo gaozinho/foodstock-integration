@@ -9,13 +9,16 @@ class StartProductionBody{
     private $restaurant_id;
     private $order_id;
     private $json;
+    public $order;
 
-    public function __construct($broker_id, $restaurant_id, $order_id, $json)
+    public function __construct($broker_id, $restaurant_id, $order)
     {
         $this->broker_id = $broker_id;
         $this->restaurant_id = $restaurant_id;
-        $this->order_id = $order_id;
-        $this->json = $json;
+        $this->order_id = $order->orderId;
+        $this->json = $order->json;
+
+        $this->order = $order;
     }
 
     public function toArray(){

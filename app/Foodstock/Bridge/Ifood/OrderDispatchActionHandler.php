@@ -43,6 +43,6 @@ class OrderDispatchActionHandler extends BaseHandler{
             //$success = true; //Finaliza sem informar dispatch
         //}     
         
-        return $success;
+        //return $success;
     }
 }
