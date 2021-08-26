@@ -44,8 +44,8 @@ class BaseIntegration{
             500	- Internal Server Error
         */   
         $json = $this->parseHttpResponse($httpResponse);
-        $json->statusCode = $httpResponse->getStatusCode();
-        $json->reasonPhrase = $httpResponse->getReasonPhrase();
+        $json->statusCode = is_object($httpResponse) ? $httpResponse->getStatusCode() : 0;
+        $json->reasonPhrase = is_object($httpResponse) ? $httpResponse->getReasonPhrase() : "Cant´t define an error reason.";
         $json->success = false;
         return $json;
     }     

@@ -32,9 +32,17 @@ class Pooling extends BaseIntegration implements RequestInterface{
         }catch(BadResponseException $exception){ //400, 500 Family
             return $this->parseErrorResponse($exception->getResponse());
         }catch(ConnectException $connException){
-            return $this->parseErrorResponse($connException->getResponse());
+            $json = new \stdClass;
+            $json->statusCode = 0;
+            $json->reasonPhrase = "Can´t connect to ifood server.";
+            $json->success = false;
+            return $json;
         }catch(\Exception $genericException){
-            
+            $json = new stdClass;
+            $json->statusCode = 0;
+            $json->reasonPhrase = "Undefined exception";
+            $json->success = false;
+            return $json;
         }
     }
 }

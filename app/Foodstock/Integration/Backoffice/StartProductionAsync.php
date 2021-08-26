@@ -39,7 +39,13 @@ class StartProductionAsync extends BaseIntegration implements RequestInterface{
             $requests = function ($startProductionBodies) use ($uri, $headers) {
                 for ($i = 0; $i < count($startProductionBodies); $i++) {
                     $headers["form_params"] = $startProductionBodies[$i]->toArray();
-                    yield new Request('POST', $uri, $headers);
+                    //Log::info("##### HEADERS " . print_r($headers, true));
+                    $request = new Request('POST', 
+                        $uri, 
+                        $headers["headers"], 
+                        http_build_query($startProductionBodies[$i]->toArray(), null, '&')
+                    );
+                    yield $request;
                 }
             };
 
@@ -48,15 +54,25 @@ class StartProductionAsync extends BaseIntegration implements RequestInterface{
             $pool = new Pool($client, $requests($this->startProductionBodies), [
                 'concurrency' => 5,
                 'fulfilled' => function (Response $response, $index) use ($startProductionBodies) {
-                    //Log::info("####################");
+                    //Log::info("##### " . $response->getBody());
 
-                    $startProductionBodies[$index]->order->started_production = 1;
-                    $startProductionBodies[$index]->order->save();
+                    $body = $response->getBody();
+
+                    $json = json_decode($body);
+                    if(json_last_error() === JSON_ERROR_NONE){
+                        if(isset($json->success) && $json->success){
+                            $startProductionBodies[$index]->order->started_production = 1;
+                            $startProductionBodies[$index]->order->save();
+                        }else{
+                            Log::error("FALHA NA INTEGRAÇÃO", ["orderId" => $startProductionBodies[$index]->order->orderId, "response_body", $body]);
+                        }
+                    }
+
+
 
                 },
                 'rejected' => function (RequestException $reason, $index) {
-                    //Log::info("FALHA####################");
-                    // this is delivered each failed request
+                    Log::error("FALHA NA INTEGRAÇÃO", ["reason", print_r($reason->getResponse(), true)]);
                 },
             ]);       
 
