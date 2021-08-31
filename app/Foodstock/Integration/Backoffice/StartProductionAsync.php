@@ -39,7 +39,7 @@ class StartProductionAsync extends BaseIntegration implements RequestInterface{
             $requests = function ($startProductionBodies) use ($uri, $headers) {
                 for ($i = 0; $i < count($startProductionBodies); $i++) {
                     $headers["form_params"] = $startProductionBodies[$i]->toArray();
-                    //Log::info("##### HEADERS " . print_r($headers, true));
+                    if(env("APP_DEBUG")) Log::info("##### HEADERS " . print_r($headers, true));
                     $request = new Request('POST', 
                         $uri, 
                         $headers["headers"], 
@@ -52,9 +52,9 @@ class StartProductionAsync extends BaseIntegration implements RequestInterface{
             $startProductionBodies = $this->startProductionBodies;
 
             $pool = new Pool($client, $requests($this->startProductionBodies), [
-                'concurrency' => 5,
+                'concurrency' => 200,
                 'fulfilled' => function (Response $response, $index) use ($startProductionBodies) {
-                    //Log::info("##### " . $response->getBody());
+                    if(env("APP_DEBUG")) Log::info("##### " . $response->getBody());
 
                     $body = $response->getBody();
 
@@ -67,7 +67,6 @@ class StartProductionAsync extends BaseIntegration implements RequestInterface{
                             Log::error("FALHA NA INTEGRAÇÃO", ["orderId" => $startProductionBodies[$index]->order->orderId, "response_body", $body]);
                         }
                     }
-
 
 
                 },

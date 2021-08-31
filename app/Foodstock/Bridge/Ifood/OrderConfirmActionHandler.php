@@ -29,11 +29,11 @@ class OrderConfirmActionHandler extends BaseHandler{
             ->where("processed", 0)->get();
         
         foreach($ifoodOrders as $ifoodOrder){
-            if($this->ifoodBroker->acknowledgment == 1){
+            //if($this->ifoodBroker->acknowledgment == 1){
                 //Log::info("IFOOD integration - Step THREE", ["Restaurant ID" => $this->ifoodBroker->restaurant_id, "Order ID", $this->ifoodEvent->orderId]);
                 $orderAction = new OrderAction($this->ifoodBroker->accessToken, $this->ifoodEvent->orderId, EndPoints::OrderActionConfirm);
                 $success = $orderAction->request(); //Avisa que aceitou o pedido
-            }
+            //}
             $ifoodOrder->processed = 1;
             $ifoodOrder->save();
         }

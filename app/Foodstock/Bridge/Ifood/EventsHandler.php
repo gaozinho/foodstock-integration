@@ -25,20 +25,20 @@ class EventsHandler extends BaseHandler{
         $pooling = new Pooling($this->ifoodBroker->accessToken, new QueryStringParameters(["types" => "PLC,CAN"]));
         $poolingsJson = $pooling->request(); //TODO - Tratar token expirados
 
-        
         Log::info("IFOOD integration - FOUND ON POOLING: " . (is_array($poolingsJson) ? count($poolingsJson) : 0));
         //Log::info("IFOOD integration - POOLING DATA: " . (is_array($poolingsJson) ? print_r($poolingsJson, true) : ""));
 
         //Log::info("IFOOD integration - EVENTS: " . print_r($poolingsJson,true));
 
         $ifoodEvents = [];
-        //dd($poolingsJson);
         
         if(is_array($poolingsJson)){
             foreach($poolingsJson as $poolingJson){
                 try{
 
-                    $ifoodEvents[] = IfoodEvent::create([
+                    $ifoodEvents[] = IfoodEvent::updateOrCreate(
+                        ['id' => $poolingJson->id],
+                        [
                         'id' => $poolingJson->id, 
                         'merchant_id' => $this->ifoodBroker->merchant_id, 
                         'createdAt' =>  date("Y-m-d H:i:s", strtotime($poolingJson->createdAt)), 

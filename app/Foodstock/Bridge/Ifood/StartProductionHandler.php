@@ -29,46 +29,47 @@ class StartProductionHandler extends BaseHandler{
     }
  
     public function handle(){
-        $ifoodOrders = IfoodOrder::where("orderId", $this->ifoodEvent->orderId)
-            ->where("processed", 1)
-            ->where("started_production", 0)->get();
+        $ifoodOrder = IfoodOrder::where("orderId", $this->ifoodEvent->orderId)
+            //->where("processed", 1)
+            //->where("started_production", 0)
+            ->first();
 
-        Log::info("IFOOD integration - Step FOUR FOUND ". count($ifoodOrders));
+        Log::info("IFOOD integration - Step FOUR FOUND ", ["order_id" => $this->ifoodEvent->orderId]);
 
         $promises = [];
 
         $startProductionBodies = [];
 
 
-        foreach($ifoodOrders as $ifoodOrder){
+        //foreach($ifoodOrders as $ifoodOrder){
             //Log::info("IFOOD integration - Step FOUR", ["Restaurant ID" => $this->ifoodBroker->restaurant_id, "Order ID", $ifoodOrder->orderId]);
             
-            $startProductionBodies[] = new StartProductionBody($this->ifoodBroker->broker_id, $this->ifoodBroker->restaurant_id, $ifoodOrder);
+            //$startProductionBodies[] = new StartProductionBody($this->ifoodBroker->broker_id, $this->ifoodBroker->restaurant_id, $ifoodOrder);
             
             
-            //$startProduction = new StartProduction(env("BACKOFFICE_TOKEN"), 
-            //    new StartProductionBody($this->ifoodBroker->broker_id, $this->ifoodBroker->restaurant_id, $ifoodOrder->orderId, $ifoodOrder->json)
-            //);
+            $startProduction = new StartProduction(env("BACKOFFICE_TOKEN"), 
+                new StartProductionBody($this->ifoodBroker->broker_id, $this->ifoodBroker->restaurant_id, $ifoodOrder)
+            );
             
             //Abre pedido no backoffice
 
-            /*
+            
             $response = $startProduction->request(); //Abre pedido no backoffice
 
             if(is_object($response) && isset($response->success) && $response->success){
                 $ifoodOrder->started_production = 1;
                 $ifoodOrder->save();
             }
-            */
+            
 
-            //$ifoodOrder->started_production = 1;
-            //$ifoodOrder->save();            
+            $ifoodOrder->started_production = 1;
+            $ifoodOrder->save();            
             
             //return $response;
-        }     
+        //}     
 
-        $startProduction = new StartProductionAsync(env("BACKOFFICE_TOKEN"), $startProductionBodies);        
-        $startProduction->request();
+        //$startProduction = new StartProductionAsync(env("BACKOFFICE_TOKEN"), $startProductionBodies);        
+        //$startProduction->request();
             
         StartedOrderProduction::dispatch($this->ifoodBroker); //Dá conhecimento
     }

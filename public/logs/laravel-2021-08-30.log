@@ -1,0 +1,325 @@
+[2021-08-30 21:52:37] local.INFO: IFOOD integration - STARTED  
+[2021-08-30 21:52:38] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",6] 
+[2021-08-30 21:52:38] local.INFO: IFOOD integration - FOUND ON POOLING: 206  
+[2021-08-30 21:52:46] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",6] 
+[2021-08-30 21:52:46] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"460921d1-0c4c-4f38-9241-7ddfefeeb8c8","0":"Total","1":61} 
+[2021-08-30 21:52:49] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:52:49] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:52:49] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:52:49] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:52:49] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:52:50] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:52:50] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:52:50] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:52:50] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:52:50] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:52:50] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:52:50] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:52:50] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:52:51] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:52:51] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:52:51] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:52:51] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:52:51] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:52:51] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:52:51] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:52:52] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:52:52] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:52:52] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:52:52] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:52:52] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:52:53] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:52:53] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:52:53] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:52:53] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:52:53] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:52:53] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:52:53] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:52:53] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:52:53] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:52:54] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:52:54] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:52:54] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:52:54] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:52:54] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:52:54] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:52:55] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:52:55] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:52:55] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:52:55] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:52:55] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:52:56] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:52:56] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:52:56] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:52:56] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:52:56] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:52:56] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:52:57] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:52:57] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:52:57] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:52:57] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:52:57] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:52:57] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:52:57] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:52:57] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:52:57] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:52:58] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:52:58] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:52:58] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:52:58] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:52:58] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:52:59] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:52:59] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:52:59] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:52:59] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:52:59] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:00] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:00] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:00] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:00] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:00] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:00] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:00] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:01] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:01] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:01] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:01] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:01] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:01] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:01] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:01] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:02] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:02] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:02] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:02] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:02] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:03] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:03] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:03] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:03] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:03] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:03] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:03] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:04] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:04] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:04] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:04] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:04] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:04] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:04] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:04] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:05] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:05] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:05] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:05] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:05] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:06] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:06] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:06] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:06] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:06] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:06] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:07] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:07] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:07] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:07] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:07] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:07] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:07] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:07] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:07] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:08] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:08] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:08] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:08] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:08] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:09] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:09] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:09] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:09] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:09] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:10] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:10] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:10] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:10] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:10] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:10] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:11] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:11] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:11] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:11] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:11] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:11] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:11] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:11] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:11] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:12] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:12] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:12] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:12] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:12] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:13] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:13] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:13] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:13] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:13] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:13] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:14] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:14] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:14] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:14] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:14] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:14] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:14] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:14] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:14] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:15] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:15] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:15] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:15] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:15] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:16] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:16] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:16] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:16] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:16] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:16] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:17] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:17] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:17] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:17] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:17] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:17] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:17] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:17] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:18] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:18] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:18] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:18] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:18] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:18] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:19] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:19] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:19] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:19] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:19] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:20] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:20] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:20] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:20] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:20] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:20] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:21] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:21] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:21] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:21] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:21] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:21] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:21] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:21] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:21] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:22] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:22] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:22] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:22] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:22] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:23] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:23] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:23] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:23] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:23] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:23] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:23] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:24] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:24] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:24] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:24] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:24] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:24] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:24] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:25] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:25] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:25] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:25] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:25] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:25] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:26] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:26] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:26] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:26] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:26] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:27] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:27] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:27] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:27] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:27] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:27] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:27] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:27] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:27] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:28] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:28] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:28] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:28] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:28] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:28] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:29] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:29] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:29] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:29] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:29] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:30] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:30] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:30] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:30] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:30] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:30] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:31] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:31] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:31] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:31] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:31] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:31] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:31] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:31] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:31] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:32] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:32] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:32] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:32] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:32] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:33] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:33] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:33] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:33] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:33] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:34] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:34] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:34] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:34] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:34] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:34] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:35] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:35] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:35] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:35] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:35] local.INFO: IFOOD integration - Step THREE : confim order integration ["restaurant_id",6] 
+[2021-08-30 21:53:35] local.INFO: IFOOD integration - Step FOUR : send order o backoffice system ["restaurant_id",6] 
+[2021-08-30 21:53:35] local.INFO: IFOOD integration - Step FOUR FOUND 0  
+[2021-08-30 21:53:35] local.INFO: IFOOD integration - Step FIVE : acknowledgment ["restaurant_id",6] 
+[2021-08-30 21:53:35] local.INFO: IFOOD integration - Step FIVE COUNT 0  
+[2021-08-30 21:53:35] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",12] 
+[2021-08-30 21:53:36] local.INFO: IFOOD integration - FOUND ON POOLING: 293  
+[2021-08-30 21:53:36] local.ERROR: Maximum execution time of 60 seconds exceeded {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Maximum execution time of 60 seconds exceeded at D:\\Projetos\\foodstock\\foodstock-integration\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:685)
+[stacktrace]
+#0 {main}
+"} 
+[2021-08-30 22:16:21] local.INFO: IFOOD integration - STARTED  
+[2021-08-30 22:16:21] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",6] 
+[2021-08-30 22:16:22] local.INFO: IFOOD integration - FOUND ON POOLING: 207  
+[2021-08-30 22:16:29] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",6] 
+[2021-08-30 22:16:29] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"460921d1-0c4c-4f38-9241-7ddfefeeb8c8","0":"Total","1":0} 
+[2021-08-30 22:16:29] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",12] 
+[2021-08-30 22:16:30] local.INFO: IFOOD integration - FOUND ON POOLING: 280  
+[2021-08-30 22:16:40] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",12] 
+[2021-08-30 22:16:40] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"85875d84-7cdf-4246-8d88-8f8565d0cee3","0":"Total","1":0} 
