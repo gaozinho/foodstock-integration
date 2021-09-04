@@ -23,6 +23,9 @@ use App\Foodstock\Bridge\Ifood\Listeners\SendAcknowledgments;
 use App\Foodstock\Bridge\Ifood\Events\CanceledOrders;
 use App\Foodstock\Bridge\Ifood\Listeners\CancelProduction;
 
+use App\Foodstock\Bridge\Ifood\Events\ConcludedOrders;
+use App\Foodstock\Bridge\Ifood\Listeners\ConcludedProduction;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -51,7 +54,11 @@ class EventServiceProvider extends ServiceProvider
 
         CanceledOrders::class => [
             CancelProduction::class,
-        ]                 
+        ], 
+        
+        ConcludedOrders::class => [
+            ConcludedProduction::class,
+        ]         
     ];
 
     /**

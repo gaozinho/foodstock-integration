@@ -9,6 +9,7 @@ use App\Models\IfoodBroker;
 use App\Models\IfoodEvent;
 use App\Models\IfoodOrder;
 
+use App\Foodstock\Bridge\Ifood\Events\ConcludedOrders;
 use App\Foodstock\Bridge\Ifood\Events\CanceledOrders;
 use App\Foodstock\Bridge\Ifood\Events\IntegratedOrders;
 use App\Foodstock\Bridge\Ifood\BaseHandler;
@@ -26,8 +27,9 @@ class OrdersHandler extends BaseHandler{
         $ifoodOrders = [];
 
         $ifoodEvents = IfoodEvent::where("merchant_id", $this->ifoodBroker->merchant_id)
-            ->where("processed", 0)
-            ->where("processing", 0)
+            //->where("processed", 0)
+            //->where("processing", 0)
+            ->where("code", "CON")
             ->skip(0)->take(50)
             //->whereRaw("date(createdAt) = '2021-08-30'")
             ->get();
@@ -46,11 +48,7 @@ class OrdersHandler extends BaseHandler{
 
             if($ifoodEvent->code == "PLC"){
                 $orderDetail = new OrderDetail($this->ifoodBroker->accessToken, $ifoodEvent->orderId);
-                //Log::info("IFOOD integration - Step TWO", ["Order ID", $ifoodEvent->orderId]);
                 $orderJson = $orderDetail->request();
-                
-                //$ifoodOrderMerchant = IfoodOrder::where("orderId", $ifoodEvent->orderId)->selectRaw("id, JSON_VALUE(JSON, '$.merchant.id') AS merchant_id")->first();
-                
                 try{
 
                     $ifoodOrder = IfoodOrder::where("orderId", $ifoodEvent->orderId)->first();
@@ -77,11 +75,7 @@ class OrdersHandler extends BaseHandler{
                         $ifoodOrders[] = $ifoodOrder;
                     }
 
-                    //dd($ifoodEvents, $orderJson, $ifoodOrderMerchant, $ifoodOrders, $ifoodOrderMerchant ? $ifoodOrderMerchant->merchant_id : $ifoodEvent->merchant_id);
-
-
                     //Verifica se a integração da loja está ativada
-
                     //Tira o evento da lista
                     $ifoodEvent->processed = 1;
                     $ifoodEvent->merchant_id = ($ifoodOrderMerchant ? $ifoodOrderMerchant->merchant_id : $ifoodEvent->merchant_id); //TODO - Update event com id_merchant
@@ -90,24 +84,17 @@ class OrdersHandler extends BaseHandler{
 
                     //Confirma o broker, pelo merchant
                     $this->ifoodBroker = IfoodBroker::where("merchant_id", $ifoodEvent->merchant_id)->firstOrFail();
-
-
                 }catch(\Exception $e){
-
+                    //Em caso de erro, coloca para reprocessamento
                     $ifoodEvent->processed = 0;
                     $ifoodEvent->processed_at = null;
                     $ifoodEvent->save();  
-
-                    throw $e;
-                    //TODO - Tratar chave duplicada
-                    
+                    Log::error("IFOOD integration - Step TWO ERROR: Cant proccess order  " . $ifoodEvent->orderId);
                 }
 
                 if($this->ifoodBroker->enabled == 1){
                     IntegratedOrders::dispatch($this->ifoodBroker, $ifoodEvent); //Aceita o pedido no ifood
                 } 
-
-    
             }elseif($ifoodEvent->code == "CAN"){
                 //Tira o evento da lista
                 $ifoodEvent->processed = 1;
@@ -131,14 +118,22 @@ class OrdersHandler extends BaseHandler{
                         Log::error("IFOOD integration - Order cancelation FAIL", ["order_id" => $ifoodEvent->orderId]);
                     }
                 }
-
-
-       
+            }elseif($ifoodEvent->code == "CON" && $this->ifoodBroker->conclude == 1){
+                $this->concludedEventHandler($this->ifoodBroker, $ifoodEvent);
             }
         }
+    }
 
-        
-        //return $ifoodOrders;
+    private function concludedEventHandler($ifoodBroker, $ifoodEvent){
+        try{
+            ConcludedOrders::dispatch($ifoodBroker, $ifoodEvent);
+            $ifoodEvent->concluded = 1;
+            $ifoodEvent->processed = 1;
+            $ifoodEvent->concluded_at = date("Y-m-d H:i:s");
+            $ifoodEvent->save();
+        }catch(\Exception $e){
+            Log::error("IFOOD integration - Order conclusion FAIL", ["order_id" => $ifoodEvent->orderId]);
+        }        
     }
    
 }

@@ -22,7 +22,7 @@ class EventsHandler extends BaseHandler{
  
     public function handle(){
         
-        $pooling = new Pooling($this->ifoodBroker->accessToken, new QueryStringParameters(["types" => "PLC,CAN"]));
+        $pooling = new Pooling($this->ifoodBroker->accessToken, new QueryStringParameters(["types" => "PLC,CAN,CON"]));
         $poolingsJson = $pooling->request(); //TODO - Tratar token expirados
 
         Log::info("IFOOD integration - FOUND ON POOLING: " . (is_array($poolingsJson) ? count($poolingsJson) : 0));

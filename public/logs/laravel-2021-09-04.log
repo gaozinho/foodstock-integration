@@ -1,0 +1,91 @@
+[2021-09-04 12:16:35] local.INFO: IFOOD integration - STARTED  
+[2021-09-04 12:16:35] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",5] 
+[2021-09-04 12:16:36] local.INFO: IFOOD integration - FOUND ON POOLING: 0  
+[2021-09-04 12:16:36] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",5] 
+[2021-09-04 12:16:36] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"3008ba54-cca7-44de-acd6-ff2d7decd952","Take":1} 
+[2021-09-04 12:16:36] local.INFO: IFOOD integration - Step TWO TAKE 1 PROCESSING 1  
+[2021-09-04 12:16:49] local.INFO: IFOOD integration - STARTED  
+[2021-09-04 12:16:49] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",5] 
+[2021-09-04 12:16:49] local.INFO: IFOOD integration - FOUND ON POOLING: 0  
+[2021-09-04 12:16:49] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",5] 
+[2021-09-04 12:16:49] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"3008ba54-cca7-44de-acd6-ff2d7decd952","Take":1} 
+[2021-09-04 12:16:49] local.INFO: IFOOD integration - Step TWO TAKE 1 PROCESSING 1  
+[2021-09-04 12:16:50] local.INFO: IFOOD integration - Step CONCLUDED : Backoffice : send conclusion request o backoffice system ["restaurant_id",5] 
+[2021-09-04 12:16:51] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",6] 
+[2021-09-04 12:16:51] local.INFO: IFOOD integration - FOUND ON POOLING: 0  
+[2021-09-04 12:16:51] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",6] 
+[2021-09-04 12:16:52] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"460921d1-0c4c-4f38-9241-7ddfefeeb8c8","Take":0} 
+[2021-09-04 12:16:52] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",11] 
+[2021-09-04 12:16:52] local.INFO: IFOOD integration - FOUND ON POOLING: 0  
+[2021-09-04 12:16:52] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",11] 
+[2021-09-04 12:16:52] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"152d3641-03b8-490d-950a-6b225161db3d","Take":0} 
+[2021-09-04 12:16:52] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",13] 
+[2021-09-04 12:16:52] local.INFO: IFOOD integration - FOUND ON POOLING: 0  
+[2021-09-04 12:16:52] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",13] 
+[2021-09-04 12:16:52] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"b283b75c-6120-4e18-9d64-d381fa481a58","Take":0} 
+[2021-09-04 12:16:52] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",14] 
+[2021-09-04 12:16:53] local.INFO: IFOOD integration - FOUND ON POOLING: 0  
+[2021-09-04 12:16:53] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",14] 
+[2021-09-04 12:16:53] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"85875d84-7cdf-4246-8d88-8f8565d0cee3","Take":0} 
+[2021-09-04 12:17:22] local.INFO: IFOOD integration - STARTED  
+[2021-09-04 12:17:22] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",5] 
+[2021-09-04 12:17:22] local.INFO: IFOOD integration - FOUND ON POOLING: 0  
+[2021-09-04 12:17:22] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",5] 
+[2021-09-04 12:17:22] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"3008ba54-cca7-44de-acd6-ff2d7decd952","Take":1} 
+[2021-09-04 12:17:22] local.INFO: IFOOD integration - Step TWO TAKE 1 PROCESSING 1  
+[2021-09-04 12:17:23] local.INFO: IFOOD integration - Step CONCLUDED : Backoffice : send conclusion request o backoffice system ["restaurant_id",5] 
+[2021-09-04 12:17:24] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",6] 
+[2021-09-04 12:17:24] local.INFO: IFOOD integration - FOUND ON POOLING: 0  
+[2021-09-04 12:17:24] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",6] 
+[2021-09-04 12:17:24] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"460921d1-0c4c-4f38-9241-7ddfefeeb8c8","Take":0} 
+[2021-09-04 12:17:24] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",11] 
+[2021-09-04 12:17:25] local.INFO: IFOOD integration - FOUND ON POOLING: 0  
+[2021-09-04 12:17:25] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",11] 
+[2021-09-04 12:17:25] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"152d3641-03b8-490d-950a-6b225161db3d","Take":0} 
+[2021-09-04 12:17:25] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",13] 
+[2021-09-04 12:17:25] local.INFO: IFOOD integration - FOUND ON POOLING: 0  
+[2021-09-04 12:17:25] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",13] 
+[2021-09-04 12:17:25] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"b283b75c-6120-4e18-9d64-d381fa481a58","Take":0} 
+[2021-09-04 12:17:25] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",14] 
+[2021-09-04 12:17:25] local.INFO: IFOOD integration - FOUND ON POOLING: 0  
+[2021-09-04 12:17:25] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",14] 
+[2021-09-04 12:17:25] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"85875d84-7cdf-4246-8d88-8f8565d0cee3","Take":0} 
+[2021-09-04 12:18:33] local.INFO: IFOOD integration - STARTED  
+[2021-09-04 12:18:34] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",5] 
+[2021-09-04 12:18:34] local.INFO: IFOOD integration - FOUND ON POOLING: 0  
+[2021-09-04 12:18:34] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",5] 
+[2021-09-04 12:18:34] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"3008ba54-cca7-44de-acd6-ff2d7decd952","Take":1} 
+[2021-09-04 12:18:34] local.INFO: IFOOD integration - Step TWO TAKE 1 PROCESSING 1  
+[2021-09-04 12:18:34] local.INFO: IFOOD integration - Step CONCLUDED : Backoffice : send conclusion request o backoffice system ["restaurant_id",5] 
+[2021-09-04 12:18:36] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",6] 
+[2021-09-04 12:18:36] local.INFO: IFOOD integration - FOUND ON POOLING: 2  
+[2021-09-04 12:18:36] local.INFO: IFOOD integration - ORDERID: 9eace059-67d2-48d3-98b5-c531cf894c15  
+[2021-09-04 12:18:36] local.INFO: IFOOD integration - ORDERID: 2284703b-c4d3-4eba-9921-f643f10a0938  
+[2021-09-04 12:18:36] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",6] 
+[2021-09-04 12:18:36] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"460921d1-0c4c-4f38-9241-7ddfefeeb8c8","Take":1} 
+[2021-09-04 12:18:36] local.INFO: IFOOD integration - Step TWO TAKE 1 PROCESSING 1  
+[2021-09-04 12:18:37] local.INFO: IFOOD integration - Step CONCLUDED : Backoffice : send conclusion request o backoffice system ["restaurant_id",6] 
+[2021-09-04 12:18:40] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",11] 
+[2021-09-04 12:18:40] local.INFO: IFOOD integration - FOUND ON POOLING: 2  
+[2021-09-04 12:18:40] local.INFO: IFOOD integration - ORDERID: 9eace059-67d2-48d3-98b5-c531cf894c15  
+[2021-09-04 12:18:40] local.INFO: IFOOD integration - ORDERID: 2284703b-c4d3-4eba-9921-f643f10a0938  
+[2021-09-04 12:18:40] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",11] 
+[2021-09-04 12:18:40] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"152d3641-03b8-490d-950a-6b225161db3d","Take":1} 
+[2021-09-04 12:18:40] local.INFO: IFOOD integration - Step TWO TAKE 1 PROCESSING 1  
+[2021-09-04 12:18:40] local.INFO: IFOOD integration - Step CONCLUDED : Backoffice : send conclusion request o backoffice system ["restaurant_id",11] 
+[2021-09-04 12:18:42] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",13] 
+[2021-09-04 12:18:42] local.INFO: IFOOD integration - FOUND ON POOLING: 2  
+[2021-09-04 12:18:42] local.INFO: IFOOD integration - ORDERID: 9eace059-67d2-48d3-98b5-c531cf894c15  
+[2021-09-04 12:18:42] local.INFO: IFOOD integration - ORDERID: 2284703b-c4d3-4eba-9921-f643f10a0938  
+[2021-09-04 12:18:42] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",13] 
+[2021-09-04 12:18:42] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"b283b75c-6120-4e18-9d64-d381fa481a58","Take":1} 
+[2021-09-04 12:18:42] local.INFO: IFOOD integration - Step TWO TAKE 1 PROCESSING 1  
+[2021-09-04 12:18:43] local.INFO: IFOOD integration - Step CONCLUDED : Backoffice : send conclusion request o backoffice system ["restaurant_id",13] 
+[2021-09-04 12:18:45] local.INFO: IFOOD integration - Step ONE : pooling ["restaurant_id",14] 
+[2021-09-04 12:18:45] local.INFO: IFOOD integration - FOUND ON POOLING: 2  
+[2021-09-04 12:18:45] local.INFO: IFOOD integration - ORDERID: 9eace059-67d2-48d3-98b5-c531cf894c15  
+[2021-09-04 12:18:45] local.INFO: IFOOD integration - ORDERID: 2284703b-c4d3-4eba-9921-f643f10a0938  
+[2021-09-04 12:18:45] local.INFO: IFOOD integration - Step TWO : get order detail ["restaurant_id",14] 
+[2021-09-04 12:18:45] local.INFO: IFOOD integration - Step TWO TOTAL {"Merchant":"85875d84-7cdf-4246-8d88-8f8565d0cee3","Take":1} 
+[2021-09-04 12:18:45] local.INFO: IFOOD integration - Step TWO TAKE 1 PROCESSING 1  
+[2021-09-04 12:18:45] local.INFO: IFOOD integration - Step CONCLUDED : Backoffice : send conclusion request o backoffice system ["restaurant_id",14] 
