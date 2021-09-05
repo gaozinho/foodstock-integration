@@ -26,9 +26,6 @@ class EventsHandler extends BaseHandler{
         $poolingsJson = $pooling->request(); //TODO - Tratar token expirados
 
         Log::info("IFOOD integration - FOUND ON POOLING: " . (is_array($poolingsJson) ? count($poolingsJson) : 0));
-        //Log::info("IFOOD integration - POOLING DATA: " . (is_array($poolingsJson) ? print_r($poolingsJson, true) : ""));
-
-        //Log::info("IFOOD integration - EVENTS: " . print_r($poolingsJson,true));
 
         $ifoodEvents = [];
         
@@ -48,7 +45,7 @@ class EventsHandler extends BaseHandler{
                         'json' => json_encode($poolingJson) , 
                         'processed' => 0
                     ]);
-                    Log::info("IFOOD integration - ORDERID: " . $poolingJson->orderId);
+                    Log::info("IFOOD integration - " . $poolingJson->code . " ORDERID: " . $poolingJson->orderId);
 
                 }catch(\Exception $e){
                     //TODO - Tratar chave duplicada

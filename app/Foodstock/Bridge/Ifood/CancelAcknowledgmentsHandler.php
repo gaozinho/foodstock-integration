@@ -22,24 +22,26 @@ class CancelAcknowledgmentsHandler extends BaseHandler{
     public function handle(){
         $jsonObjects = [];
         $ifoodEvents = IfoodEvent::where("merchant_id", $this->ifoodBroker->merchant_id)
-            ->where("processed", 1)
+            //->where("processed", 1)
             ->where("code", "CAN")
             ->where("acknowledgment", 0)
             ->get();
 
         foreach($ifoodEvents as $ifoodEvent){
-            $jsonObjects[] = json_decode($ifoodEvent->json);
-            $ifoodEvent->acknowledgment = 1;
-            $ifoodEvent->acknowledgment_at = date("Y-m-d H:i:s");
-            $ifoodEvent->save();            
-        }
+            $jsonObjects[] = json_decode($ifoodEvent->json);          
+        }            
 
         if(count($jsonObjects) > 0){
             $acknowledgment = new Acknowledgment($this->ifoodBroker->accessToken, json_encode($jsonObjects));   
-            $response = $acknowledgment->request(); //TODO - Tratar token expirado
+            $ack = $acknowledgment->request(); //TODO - Tratar token expirado
 
-            //return $response;
-
+            if($ack){
+                foreach($ifoodEvents as $ifoodEvent){
+                    $ifoodEvent->acknowledgment = 1;
+                    $ifoodEvent->acknowledgment_at = date("Y-m-d H:i:s");
+                    $ifoodEvent->save();            
+                }
+            }
         }else{
             //return true;
         }
