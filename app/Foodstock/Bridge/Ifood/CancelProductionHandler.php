@@ -29,7 +29,7 @@ class CancelProductionHandler extends BaseHandler{
         
         $ifoodOrders = IfoodOrder::where("orderId", $this->ifoodEvent->orderId)
             ->get();
-
+//dd($this->ifoodEvent);
         foreach($ifoodOrders as $ifoodOrder){
 
             $ifoodCancellation = json_decode($this->ifoodEvent->json);
@@ -44,6 +44,12 @@ class CancelProductionHandler extends BaseHandler{
             $response = $cancelProduction->request(); //Envia fato para o backoffice
 
             if(is_object($response) && isset($response->success) && $response->success){
+
+                //Tira o evento da lista
+                $this->ifoodEvent->processed = 1;
+                $this->ifoodEvent->processed_at = date("Y-m-d H:i:s");
+                $this->ifoodEvent->save();
+
                 $ifoodOrder->canceled_production = 1;
                 $ifoodOrder->save();
             }

@@ -30,10 +30,10 @@ class OrdersHandler extends BaseHandler{
             ->where("processed", 0)
             ->where("processing", 0)
             //->where("orderId", '70cfa2ba-465a-45fc-860c-bfe4eb92a45')
-            //->where("code", "CON")
+            //->where("code", "CAN")
             ->skip(0)
             ->take(50)
-            //->whereRaw("date(createdAt) = '2021-08-30'")
+            //->whereRaw("date(createdAt) = '2021-09-06'")
             ->get();
 
         Log::info("IFOOD integration - Step TWO TOTAL", ["Merchant" => $this->ifoodBroker->merchant_id, "Take" => count($ifoodEvents)]);
@@ -98,10 +98,6 @@ class OrdersHandler extends BaseHandler{
                     IntegratedOrders::dispatch($this->ifoodBroker, $ifoodEvent); //Aceita o pedido no ifood
                 } 
             }elseif($ifoodEvent->code == "CAN"){
-                //Tira o evento da lista
-                $ifoodEvent->processed = 1;
-                $ifoodEvent->processed_at = date("Y-m-d H:i:s");
-                $ifoodEvent->save();
 
                 $ifoodOrderMerchant = IfoodOrder::where("orderId", $ifoodEvent->orderId)->selectRaw("id, JSON_VALUE(JSON, '$.merchant.id') AS merchant_id")->first();
                 if(is_object($ifoodOrderMerchant)){
