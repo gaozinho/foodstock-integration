@@ -21,7 +21,6 @@ class EventsHandler extends BaseHandler{
     }
  
     public function handle(){
-        
         $pooling = new Pooling($this->ifoodBroker->accessToken, new QueryStringParameters(["types" => "PLC,CAN,CON"]));
         $poolingsJson = $pooling->request(); //TODO - Tratar token expirados
 
@@ -31,25 +30,21 @@ class EventsHandler extends BaseHandler{
         
         if(is_array($poolingsJson)){
             foreach($poolingsJson as $poolingJson){
-                try{
-
-                    $ifoodEvents[] = IfoodEvent::updateOrCreate(
-                        ['id' => $poolingJson->id],
-                        [
-                        'id' => $poolingJson->id, 
-                        'merchant_id' => $this->ifoodBroker->merchant_id, 
-                        'createdAt' =>  date("Y-m-d H:i:s", strtotime($poolingJson->createdAt)), 
-                        'fullCode' => $poolingJson->fullCode, 
-                        'code' => $poolingJson->code, 
-                        'orderId' => $poolingJson->orderId, 
-                        'json' => json_encode($poolingJson) , 
-                        'processed' => 0
-                    ]);
-                    Log::info("IFOOD integration - " . $poolingJson->code . " ORDERID: " . $poolingJson->orderId);
-
-                }catch(\Exception $e){
-                    //TODO - Tratar chave duplicada
-                }
+                $ifoodEvents[] = IfoodEvent::updateOrCreate(
+                [
+                    'id' => $poolingJson->id
+                ],
+                [
+                    'id' => $poolingJson->id, 
+                    'merchant_id' => $this->ifoodBroker->merchant_id, 
+                    'createdAt' =>  date("Y-m-d H:i:s", strtotime($poolingJson->createdAt)), 
+                    'fullCode' => $poolingJson->fullCode, 
+                    'code' => $poolingJson->code, 
+                    'orderId' => $poolingJson->orderId, 
+                    'json' => json_encode($poolingJson) , 
+                    'processed' => 0
+                ]);
+                Log::info("IFOOD integration - " . $poolingJson->code . " ORDERID: " . $poolingJson->orderId);
             }
         }
 

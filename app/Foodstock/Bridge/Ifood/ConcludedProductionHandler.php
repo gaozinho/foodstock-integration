@@ -28,19 +28,27 @@ class ConcludedProductionHandler extends BaseHandler{
     }
  
     public function handle(){
-        $concludedProduction = new ConcludeProduction(env("BACKOFFICE_TOKEN"), $this->ifoodEvent->orderId);
-        $response = $concludedProduction->request(); //Envia fato para o backoffice
+        try{
+            $concludedProduction = new ConcludeProduction(env("BACKOFFICE_TOKEN"), $this->ifoodEvent->orderId);
+            $response = $concludedProduction->request(); //Envia fato para o backoffice
 
-        $jsonObjects[] = json_decode($this->ifoodEvent->json);
-        $acknowledgment = new Acknowledgment($this->ifoodBroker->accessToken, json_encode($jsonObjects));   
-        $ack = $acknowledgment->request(); //TODO - Tratar token expirado             
-        
-        if($ack){
-            $this->ifoodEvent->concluded = 1;
-            $this->ifoodEvent->processed = 1;
-            $this->ifoodEvent->concluded_at = date("Y-m-d H:i:s");
-            $this->ifoodEvent->save();     
+            $jsonObjects[] = json_decode($this->ifoodEvent->json);
+            $acknowledgment = new Acknowledgment($this->ifoodBroker->accessToken, json_encode($jsonObjects));   
+            $ack = $acknowledgment->request(); //TODO - Tratar token expirado             
+            
+            if($ack){
+                $this->ifoodEvent->concluded = 1;
+                $this->ifoodEvent->processed = 1;
+                $this->ifoodEvent->acknowledgment = 1;
+                $this->ifoodEvent->acknowledgment_at = date("Y-m-d H:i:s");
+                $this->ifoodEvent->concluded_at = date("Y-m-d H:i:s");
+                $this->ifoodEvent->save();     
+            }
+
+            Log::info("IFOOD integration - Step CONCLUDED : OK", ["restaurant_id" => $this->ifoodBroker->restaurant_id, "order" => $this->ifoodEvent->orderId]);
+         
+        }catch(\Eception $e){
+            Log::error("IFOOD integration - Order conclusion FAIL on handler", ["order_id" => $this->ifoodEvent->orderId]);
         }
-
     }
 }

@@ -29,11 +29,12 @@ class OrdersHandler extends BaseHandler{
         $ifoodEvents = IfoodEvent::where("merchant_id", $this->ifoodBroker->merchant_id)
             ->where("processed", 0)
             ->where("processing", 0)
-            //->where("code", "CAN")
-            ->skip(0)->take(50)
+            //->where("orderId", '70cfa2ba-465a-45fc-860c-bfe4eb92a45')
+            //->where("code", "CON")
+            ->skip(0)
+            ->take(50)
             //->whereRaw("date(createdAt) = '2021-08-30'")
             ->get();
-
 
         Log::info("IFOOD integration - Step TWO TOTAL", ["Merchant" => $this->ifoodBroker->merchant_id, "Take" => count($ifoodEvents)]);
 
@@ -129,10 +130,11 @@ class OrdersHandler extends BaseHandler{
         try{
             ConcludedOrders::dispatch($ifoodBroker, $ifoodEvent);
         }catch(\Exception $e){
+            $ifoodEvent->processing = 0;
             $ifoodEvent->concluded = 0;
             $ifoodEvent->processed = 0;
             $ifoodEvent->concluded_at = null;            
-            Log::error("IFOOD integration - Order conclusion FAIL", ["order_id" => $ifoodEvent->orderId]);
+            Log::error("IFOOD integration - Order conclusion FAIL", ["order_id" => $ifoodEvent->orderId, "message" => $e->getMessage()]);
         }        
     }
    

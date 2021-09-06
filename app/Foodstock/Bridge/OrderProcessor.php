@@ -25,6 +25,7 @@ class OrderProcessor{
             ->get();
         foreach($ifoodBrokers as $ifoodBroker){
             StartedProccess::dispatch($ifoodBroker); //Passo 1
+            //break;
         }
     }
 }
