@@ -101,19 +101,20 @@ class OrdersHandler extends BaseHandler{
 
                 $ifoodOrderMerchant = IfoodOrder::where("orderId", $ifoodEvent->orderId)->selectRaw("id, JSON_VALUE(JSON, '$.merchant.id') AS merchant_id")->first();
                 if(is_object($ifoodOrderMerchant)){
-                    $this->ifoodBroker = IfoodBroker::where("merchant_id", $ifoodOrderMerchant->merchant_id)->first();
-
-                    try{
-                        //CANCELA PEDIDO
-                        if($this->ifoodBroker->enabled == 1){
-                            CanceledOrders::dispatch($this->ifoodBroker, $ifoodEvent);
+                    $ifoodBroker = IfoodBroker::where("merchant_id", $ifoodOrderMerchant->merchant_id)->first();
+                    if(is_object($ifoodBroker)){
+                        try{
+                            //CANCELA PEDIDO
+                            if($ifoodBroker->enabled == 1){
+                                CanceledOrders::dispatch($ifoodBroker, $ifoodEvent);
+                            }
+                        }catch(\Exception $e){
+                            $ifoodEvent->processed = 0;
+                            $ifoodEvent->processed_at = null;
+                            $ifoodEvent->save();                        
+                            //TODO - Tratar chave duplicada
+                            Log::error("IFOOD integration - Order cancelation FAIL", ["order_id" => $ifoodEvent->orderId]);
                         }
-                    }catch(\Exception $e){
-                        $ifoodEvent->processed = 0;
-                        $ifoodEvent->processed_at = null;
-                        $ifoodEvent->save();                        
-                        //TODO - Tratar chave duplicada
-                        Log::error("IFOOD integration - Order cancelation FAIL", ["order_id" => $ifoodEvent->orderId]);
                     }
                 }
             }elseif($ifoodEvent->code == "CON" && $this->ifoodBroker->conclude == 1){

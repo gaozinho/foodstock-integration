@@ -29,7 +29,7 @@ class OrderAction extends BaseIntegration implements RequestInterface{
             $json = $this->parseHttpResponse($httpResponse);
             return true;
         }catch(BadResponseException $exception){ //400, 500 Family
-            return $this->parseErrorResponse($exception->getResponse());
+            return $this->parseErrorResponse("{}");
         }catch(ConnectException $connException){
             return $this->parseErrorResponse($connException->getResponse());
         }catch(\Exception $genericException){

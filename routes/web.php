@@ -3,15 +3,29 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Foodstock\Bridge\OrderProcessor;
+use App\Foodstock\Bridge\OrderProcessorParallel;
+use Illuminate\Http\Request;
 
 Route::get('/order-processor', function () {
-    $data["start"] = time();
+    //$data["start"] = time();
     (new OrderProcessor())->start();
-    $data["end"] = time();
-    $data["time"] = $data["end"] - $data["start"];
-    echo json_encode($data);
+    //$data["end"] = time();
+    //$data["time"] = $data["end"] - $data["start"];
+    //echo json_encode($data);
 });
 
+Route::get('/order-processor-parallel', function (Request $request) {
+    $input = $request->all();
+    //$data["start"] = time();
+    (new OrderProcessorParallel())->start($input);
+    //$data["end"] = time();
+    //$data["time"] = $data["end"] - $data["start"];
+    //echo json_encode($data);
+});
+
+
+
+/*
 use App\Foodstock\Integration\Ifood\Authentication\UserCode;
 use App\Foodstock\Integration\Ifood\Authentication\Token;
 use App\Foodstock\Integration\Ifood\RequestParameters\BodyParameters;
@@ -27,14 +41,12 @@ use App\Foodstock\Integration\Backoffice\StartProductionBody;
 use App\Foodstock\Bridge\Ifood\StartProductionHandler;
 
 Route::get('/', function () {
-    phpinfo();
-//echo public_path();
+    //phpinfo();
+    //echo public_path();
     
     //$startProduction = new StartProduction(env("BACKOFFICE_TOKEN"), new StartProductionBody(1, 2, 'd18dd059-d9b2-4758-b97c-f8c506d80949', '{}'));
     //$response = $startProduction->request();
     //dd($response);
-
-    /*
 
     //$authorization = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJzdWIiOiI2MTIwMTAwYS1iNzJjLTQwYWUtYWUxMy0wYTFlOTYyNjRiZmUiLCJhcHBfbmFtZSI6ImZvb2RzdG9ja3Rlc3RlZCIsImF1ZCI6WyJjYXRhbG9nIiwiZmluYW5jaWFsIiwicmV2aWV3IiwibWVyY2hhbnQiLCJvcmRlciIsIm9hdXRoLXNlcnZlciJdLCJvd25lcl9uYW1lIjoid2FnbmVyZ29tZXNnb25jYWx2ZXMiLCJzY29wZSI6WyJjYXRhbG9nIiwicmV2aWV3IiwibWVyY2hhbnQiLCJvcmRlciIsImNvbmNpbGlhdG9yIl0sImlzcyI6ImlGb29kIiwidHlwZSI6ImNvbXBhY3QiLCJleHAiOjE2MjQzMTE3NTAsImlhdCI6MTYyNDI5MDE1MCwianRpIjoiMGUxMDNkNTMtNzdjOC00OGIzLTgxYTItZGZjNDU3MjBmZWZiIiwibWVyY2hhbnRfc2NvcGVkIjp0cnVlLCJjbGllbnRfaWQiOiI0ZjllMzhjNC02YTQ3LTRmZjEtYjVkZC03N2Y3NjQ4MDQzMDIifQ.nYZb1GdYMJx_7Yc5Fq52nimL3c-d8mdzzCGj6WZB9mKKzrYDCOzJ2Xb0cy4lCMr1KYLHL8p2SyqIz6bcQrp42cjT_nHOcJD2JMei5KVfwaEozqOy4hJwdnxGzWGLylbhaVwK4cWEMtxHeh0Sx6iHpEQdKgoWDUy5TaHdIVvyLvU";
     //$orderId = 'a0a43af9-3d55-45f9-b61b-45f40e2b9e82';
@@ -93,5 +105,6 @@ Route::get('/', function () {
     $json = $userCode->request();
     dd($json);    
 
-    */
 });
+
+*/

@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Dotenv\Dotenv;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,7 +25,27 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+
+        $loopStart = intval(env('REQUEST_BROKERS_DIVIDE_START', 0));
+        $loopEnd = intval(env('REQUEST_BROKERS_DIVIDE_END', 9));
+
+        $all = intval(env('REQUEST_BROKERS_PROCESS_ALL', 0));
+
+        if($all == 1){
+            $schedule->exec('curl ' . env('APP_URL') . '/order-processor-parallel')
+            ->description("Solicita processamento dos brokers")
+            ->everyMinute()
+            ->appendOutputTo(public_path("logs" . DIRECTORY_SEPARATOR . "cron-" . date("Y-m-d") . ".log"))
+            ->runInBackground();
+        }else{
+            for($i = $loopStart; $i <= $loopEnd; $i++){
+                $schedule->exec('curl ' . env('APP_URL') . '/order-processor-parallel?brokerEndsWith=' . $i)
+                    ->description("Solicita processamento dos brokers")
+                    ->everyMinute()
+                    ->appendOutputTo(public_path("logs" . DIRECTORY_SEPARATOR . "cron-" . $i . "-" . date("Y-m-d") . ".log"))
+                    ->runInBackground();
+            }
+        }
     }
 
     /**
