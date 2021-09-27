@@ -135,6 +135,8 @@ class OrdersHandler extends BaseHandler{
 
         }catch(\Exception $e){
             DB::rollBack();
+            Log::error("IFOOD integration - Error processing events", ["message" => $e->getMessage()]);
+
         }
 
     }
