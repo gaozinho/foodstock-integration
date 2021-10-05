@@ -14,6 +14,15 @@ Route::get('/order-processor', function () {
     //echo json_encode($data);
 });
 
+Route::get('/order-processor/ifood', function () {
+    (new OrderProcessor())->startIfood();
+});
+
+Route::get('/order-processor/neemo', function () {
+    (new OrderProcessor())->startNeemo();
+});
+
+
 Route::get('/order-processor-parallel', function (Request $request) {
     $input = $request->all();
     //$data["start"] = time();
