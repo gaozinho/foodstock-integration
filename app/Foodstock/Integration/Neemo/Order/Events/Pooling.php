@@ -23,7 +23,6 @@ class Pooling extends BaseTokenIntegration implements RequestInterface{
         try{
             $httpResponse = $this->httpClient->post(EndPoints::EventsPooling, $this->formParameters->formParameters());
             $json = $this->parseHttpResponse($httpResponse);
-
             if(isset($json->code) && $json->code > 299){
                 throw new \Exception($json->name);
             }
