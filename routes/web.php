@@ -6,12 +6,10 @@ use App\Foodstock\Bridge\OrderProcessor;
 use App\Foodstock\Bridge\OrderProcessorParallel;
 use Illuminate\Http\Request;
 
+use App\Foodstock\Actions\RestartOrderProccess;
+
 Route::get('/order-processor', function () {
-    //$data["start"] = time();
     (new OrderProcessor())->start();
-    //$data["end"] = time();
-    //$data["time"] = $data["end"] - $data["start"];
-    //echo json_encode($data);
 });
 
 Route::get('/order-processor/ifood', function () {

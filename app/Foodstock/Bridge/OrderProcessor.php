@@ -18,6 +18,10 @@ class OrderProcessor{
 
     public function startNeemo(){
         Log::info("NEEMO integration - STARTED");
+        if(!env("SERVER_PROCCESS_NEEMO")){
+            echo "Cant proccess Neemo";
+            return;
+        }
 
         $neemoBrokers = NeemoBroker::where("broker_id", 3)
             ->where("enabled", 1)
@@ -36,13 +40,18 @@ class OrderProcessor{
     public function startIfood(){
         Log::info("IFOOD integration - STARTED");
 
+        if(!env("SERVER_PROCCESS_IFOOD")){
+            echo "Cant proccess Ifood";
+            return;
+        }
+
         $ifoodBrokers = IfoodBroker::where("broker_id", 1)
             ->where("enabled", 1)
             ->where("validated", 1)
             ->get();
         $inicio = \time();
         foreach($ifoodBrokers as $ifoodBroker){
-            \App\Foodstock\Bridge\Ifood\Events\StartedProccess\StartedProccess::dispatch($ifoodBroker); //Passo 1
+            \App\Foodstock\Bridge\Ifood\Events\StartedProccess::dispatch($ifoodBroker); //Passo 1
             //break;
         }
         $fim = \time();

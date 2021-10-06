@@ -13,10 +13,9 @@ use App\Foodstock\Integration\Backoffice\StartProductionAsync;
 use App\Foodstock\Integration\Backoffice\StartProductionBody;
 use App\Foodstock\Bridge\Neemo\BaseHandler;
 use App\Foodstock\Bridge\Neemo\Events\StartedOrderProduction;
+use App\Foodstock\Actions\RestartOrderProccess;
 
 use Illuminate\Support\Facades\Log;
-
-use GuzzleHttp\Promise\EachPromise;
 
 class StartProductionHandler extends BaseHandler{
 
@@ -29,33 +28,38 @@ class StartProductionHandler extends BaseHandler{
     }
  
     public function handle(){
-        $neemoOrder = NeemoOrder::where("orderId", $this->neemoEvent->orderId)
-            //->where("processed", 1)
-            //->where("started_production", 0)
-            ->first();
+        try{
+            $neemoOrder = NeemoOrder::where("orderId", $this->neemoEvent->orderId)
+                //->where("processed", 1)
+                //->where("started_production", 0)
+                ->first();
 
-        Log::info("NEEMO integration - Step FOUR FOUND ", ["order_id" => $this->neemoEvent->orderId]);
+            Log::info("NEEMO integration - Step FOUR FOUND ", ["order_id" => $this->neemoEvent->orderId]);
 
-        $promises = [];
+            $promises = [];
 
-        $startProductionBodies = [];
+            $startProductionBodies = [];
 
-        $startProduction = new StartProduction(env("BACKOFFICE_TOKEN"), 
-            new StartProductionBody($this->neemoBroker->broker_id, $this->neemoBroker->restaurant_id, $neemoOrder)
-        );
-        
-        //Abre pedido no backoffice
+            $startProduction = new StartProduction(env("BACKOFFICE_TOKEN"), 
+                new StartProductionBody($this->neemoBroker->broker_id, $this->neemoBroker->restaurant_id, $neemoOrder)
+            );
+            
+            //Abre pedido no backoffice
 
-        $response = $startProduction->request(); //Abre pedido no backoffice
+            $response = $startProduction->request(); //Abre pedido no backoffice
 
-        if(is_object($response) && isset($response->success) && $response->success){
-            $neemoOrder->started_production = 1;
-        }else{
-            $neemoOrder->started_production = 0;
+            if(is_object($response) && isset($response->success) && $response->success){
+                $neemoOrder->started_production = 1;
+            }else{
+                $neemoOrder->started_production = 0;
+            }
+            
+            $neemoOrder->save();            
+
+            StartedOrderProduction::dispatch($this->neemoBroker); //Dá conhecimento
+        }catch(\Exception $e){
+            //Se não integrar, reinicia processo para tentar novamente
+            RestartOrderProccess::restart($this->neemoEvent->orderId, 3); //TODO Use enums
         }
-        
-        $neemoOrder->save();            
-
-        //StartedOrderProduction::dispatch($this->neemoBroker); //Dá conhecimento
     }
 }

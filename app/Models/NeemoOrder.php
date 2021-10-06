@@ -24,6 +24,6 @@ class NeemoOrder extends Model
     /**
      * @var array
      */
-    protected $fillable = ['neemo_event_id', 'merchant_id', 'orderId', 'json', 'created_at', 'updated_at', 'processed', 'dispatched', 'started_production'];
+    protected $fillable = ['tries', 'neemo_event_id', 'merchant_id', 'orderId', 'json', 'created_at', 'updated_at', 'processed', 'dispatched', 'started_production'];
 
 }

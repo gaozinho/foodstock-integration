@@ -8,6 +8,7 @@ use App\Foodstock\Integration\Interfaces\RequestInterface; //TODO - Revisar paco
 use App\Foodstock\Integration\Backoffice\StartProductionBody;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\ConnectException;
+use App\Foodstock\Actions\RestartOrderProccess;
 
 class StartProduction extends BaseIntegration implements RequestInterface{
 
@@ -20,16 +21,16 @@ class StartProduction extends BaseIntegration implements RequestInterface{
 
     //Interface
     public function request(){
-        try{
+        //try{
             $url = env("BACKOFFICE_START_PRODUCTION_URI");
             $httpResponse = $this->httpClient->post($url, $this->formatRequestParameters());
             $json = $this->parseHttpResponse($httpResponse);
             return $json;
-        }catch(BadResponseException $exception){ //400, 500 Family
-            return $this->parseErrorResponse($exception->getResponse());
-        }catch(ConnectException $connException){
+        //}catch(BadResponseException $exception){ //400, 500 Family
+            //return $this->parseErrorResponse($exception->getResponse());
+        //}catch(ConnectException $connException){
             //return $this->parseErrorResponse($connException->getResponse());
-        }
+        //}
     } 
 
     private function formatRequestParameters(){

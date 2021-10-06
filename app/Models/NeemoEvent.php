@@ -36,6 +36,6 @@ class NeemoEvent extends Model
     /**
      * @var array
      */
-    protected $fillable = ['concluded', 'concluded_at', 'id', 'merchant_id', 'createdAt', 'fullCode', 'code', 'orderId', 'json', 'processing', 'processed', 'processed_at', 'acknowledgment', 'acknowledgment_at', 'created_at', 'updated_at'];
+    protected $fillable = ['tries', 'concluded', 'concluded_at', 'id', 'merchant_id', 'createdAt', 'fullCode', 'code', 'orderId', 'json', 'processing', 'processed', 'processed_at', 'acknowledgment', 'acknowledgment_at', 'created_at', 'updated_at'];
 
 }

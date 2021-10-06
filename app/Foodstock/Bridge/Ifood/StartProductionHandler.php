@@ -13,10 +13,10 @@ use App\Foodstock\Integration\Backoffice\StartProductionAsync;
 use App\Foodstock\Integration\Backoffice\StartProductionBody;
 use App\Foodstock\Bridge\Ifood\BaseHandler;
 use App\Foodstock\Bridge\Ifood\Events\StartedOrderProduction;
+use App\Foodstock\Actions\RestartOrderProccess;
 
 use Illuminate\Support\Facades\Log;
 
-use GuzzleHttp\Promise\EachPromise;
 
 class StartProductionHandler extends BaseHandler{
 
@@ -29,48 +29,53 @@ class StartProductionHandler extends BaseHandler{
     }
  
     public function handle(){
-        $ifoodOrder = IfoodOrder::where("orderId", $this->ifoodEvent->orderId)
-            //->where("processed", 1)
-            //->where("started_production", 0)
-            ->first();
+        try{
+            $ifoodOrder = IfoodOrder::where("orderId", $this->ifoodEvent->orderId)
+                //->where("processed", 1)
+                //->where("started_production", 0)
+                ->first();
 
-        Log::info("IFOOD integration - Step FOUR FOUND ", ["order_id" => $this->ifoodEvent->orderId]);
+            Log::info("IFOOD integration - Step FOUR FOUND ", ["order_id" => $this->ifoodEvent->orderId]);
 
-        $promises = [];
+            $promises = [];
 
-        $startProductionBodies = [];
+            $startProductionBodies = [];
 
 
-        //foreach($ifoodOrders as $ifoodOrder){
-            //Log::info("IFOOD integration - Step FOUR", ["Restaurant ID" => $this->ifoodBroker->restaurant_id, "Order ID", $ifoodOrder->orderId]);
-            
-            //$startProductionBodies[] = new StartProductionBody($this->ifoodBroker->broker_id, $this->ifoodBroker->restaurant_id, $ifoodOrder);
-            
-            
-            $startProduction = new StartProduction(env("BACKOFFICE_TOKEN"), 
-                new StartProductionBody($this->ifoodBroker->broker_id, $this->ifoodBroker->restaurant_id, $ifoodOrder)
-            );
-            
-            //Abre pedido no backoffice
+            //foreach($ifoodOrders as $ifoodOrder){
+                //Log::info("IFOOD integration - Step FOUR", ["Restaurant ID" => $this->ifoodBroker->restaurant_id, "Order ID", $ifoodOrder->orderId]);
+                
+                //$startProductionBodies[] = new StartProductionBody($this->ifoodBroker->broker_id, $this->ifoodBroker->restaurant_id, $ifoodOrder);
+                
+                
+                $startProduction = new StartProduction(env("BACKOFFICE_TOKEN"), 
+                    new StartProductionBody($this->ifoodBroker->broker_id, $this->ifoodBroker->restaurant_id, $ifoodOrder)
+                );
+                
+                //Abre pedido no backoffice
 
-            
-            $response = $startProduction->request(); //Abre pedido no backoffice
+                
+                $response = $startProduction->request(); //Abre pedido no backoffice
 
-            if(is_object($response) && isset($response->success) && $response->success){
+                if(is_object($response) && isset($response->success) && $response->success){
+                    $ifoodOrder->started_production = 1;
+                    $ifoodOrder->save();
+                }
+                
+
                 $ifoodOrder->started_production = 1;
-                $ifoodOrder->save();
-            }
-            
+                $ifoodOrder->save();            
+                
+                //return $response;
+            //}     
 
-            $ifoodOrder->started_production = 1;
-            $ifoodOrder->save();            
-            
-            //return $response;
-        //}     
-
-        //$startProduction = new StartProductionAsync(env("BACKOFFICE_TOKEN"), $startProductionBodies);        
-        //$startProduction->request();
-            
-        StartedOrderProduction::dispatch($this->ifoodBroker); //Dá conhecimento
+            //$startProduction = new StartProductionAsync(env("BACKOFFICE_TOKEN"), $startProductionBodies);        
+            //$startProduction->request();
+                
+            StartedOrderProduction::dispatch($this->ifoodBroker); //Dá conhecimento
+        }catch(\Exception $e){
+            //Se não integrar, reinicia processo para tentar novamente
+            RestartOrderProccess::restart($this->neemoEvent->orderId, 1); //TODO Use enums
+        }            
     }
 }
