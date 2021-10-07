@@ -33,9 +33,17 @@ class OrderConfirmActionHandler extends BaseHandler{
         foreach($neemoOrders as $neemoOrder){
             $parameters = new PoolingParameters($this->neemoBroker->accessToken, OrderStatus::Confirmado);
             $orderAction = new OrderAction($parameters, $this->neemoEvent->orderId);
-            $success = $orderAction->request(); //Avisa que aceitou o pedido
-            $neemoOrder->processed = 1;
-            $neemoOrder->save();
+            try{
+                $success = $orderAction->request(); //Avisa que aceitou o pedido
+                if($success){
+                    $neemoOrder->processed = 1;
+                    $neemoOrder->save();
+                }
+            }catch(\Exception $e){
+                Log::error($e->getTraceAsString());
+            }
+
+
         }
     }
 }

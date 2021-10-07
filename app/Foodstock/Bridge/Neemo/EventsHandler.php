@@ -33,7 +33,7 @@ class EventsHandler extends BaseHandler{
     
             $poolingsJson = $pooling->request(); //TODO - Tratar token expirados
     
-            $pages = intdiv($poolingsJson->paging->total, $poolingsJson->paging->limit) + 1;
+            $pages = intdiv($poolingsJson->paging->total, isset($poolingsJson->paging) ? $poolingsJson->paging->limit : 1) + 1;
     
             Log::info("NEEMO integration - FOUND ON POOLING: " . (is_array($poolingsJson) ? count($poolingsJson) : 0));
     

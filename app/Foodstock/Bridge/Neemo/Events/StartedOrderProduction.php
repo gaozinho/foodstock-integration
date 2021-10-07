@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Foodstock\Bridge\Ifood\Events;
+namespace App\Foodstock\Bridge\Neemo\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
